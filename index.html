@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hacked</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: flicker 0.15s infinite;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+      color: red;
+      animation: shake 0.3s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(-50%, -50%) translateX(0); }
+      25% { transform: translate(-50%, -50%) translateX(-5px); }
+      50% { transform: translate(-50%, -50%) translateX(5px); }
+      75% { transform: translate(-50%, -50%) translateX(-5px); }
+      100% { transform: translate(-50%, -50%) translateX(0); }
+    }
+
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    #terminal {
+      margin-top: 30px;
+      font-size: 14px;
+      color: lime;
+    }
+  </style>
+</head>
+<body onload="startHacking()">
+  <audio id="alertSound" autoplay>
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+  </audio>
+  <div id="main">
+    <h1>YOUR PHONE IS HACKED BY RAHUL PANDEY!</h1>
+    <div id="terminal">Initializing backdoor...</div>
+  </div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const lines = [
+      "Accessing camera...",
+      "Downloading files...",
+      "Extracting contacts...",
+      "Tracking location...",
+      "Sending data to server...",
+      "Injecting malware...",
+      "System override complete.",
+    ];
+
+    let i = 0;
+
+    function startHacking() {
+      const sound = document.getElementById("alertSound");
+      sound.play();
+
+      const interval = setInterval(() => {
+        if (i < lines.length) {
+          terminal.innerHTML += "<br>> " + lines[i];
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
